@@ -76,6 +76,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ButtonSound" type="AudioStreamPlayer" parent="Buttons/SoundButton/SoundOff/SoundOffButton"]
+stream = ExtResource( 7 )
+
 [node name="SoundOn" type="Node2D" parent="Buttons/SoundButton"]
 z_index = 1
 
@@ -91,9 +94,6 @@ script = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="ButtonSound" type="AudioStreamPlayer" parent="Buttons/SoundButton/SoundOn/SoundOnButton"]
-stream = ExtResource( 7 )
 
 [node name="Background" type="Node2D" parent="."]
 

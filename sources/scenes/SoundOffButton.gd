@@ -18,6 +18,7 @@ func _ready():
 
 
 func _on_SoundOffButton_button_up():
+	$ButtonSound.play()
 	get_node("../../../../Music/GameMusic").play()
 	get_parent().visible = false
 	get_parent().get_parent().get_node("SoundOn").visible = true
