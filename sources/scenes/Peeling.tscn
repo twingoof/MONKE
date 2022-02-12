@@ -1,0 +1,182 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/scenes/third_scene.jpg" type="Texture" id=1]
+[ext_resource path="res://assets/peeled_banana.png" type="Texture" id=2]
+[ext_resource path="res://assets/center_peel.png" type="Texture" id=3]
+[ext_resource path="res://assets/left_peel.png" type="Texture" id=4]
+[ext_resource path="res://assets/right_peel.png" type="Texture" id=5]
+[ext_resource path="res://sources/scenes/CenterPeelHitbox.gd" type="Script" id=6]
+[ext_resource path="res://sources/scenes/RightPeelHitbox.gd" type="Script" id=7]
+[ext_resource path="res://sources/scenes/LeftPeelHitbox.gd" type="Script" id=8]
+[ext_resource path="res://sources/scenes/LeftPeel.gd" type="Script" id=9]
+
+[sub_resource type="Animation" id=1]
+resource_name = "LeftPeeling"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 1000 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "RightPeeling"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 1000 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "CenterPeeling"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 1000 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[node name="PeelingGame" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Background"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="BananaPeeling" type="Node2D" parent="."]
+z_index = 1
+
+[node name="Banana" type="Node2D" parent="BananaPeeling"]
+position = Vector2( 8, -9 )
+
+[node name="Sprite" type="Sprite" parent="BananaPeeling/Banana"]
+position = Vector2( 923, 567 )
+texture = ExtResource( 2 )
+
+[node name="LeftPeel" type="Node2D" parent="BananaPeeling"]
+position = Vector2( 1033, 588 )
+script = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="BananaPeeling/LeftPeel"]
+texture = ExtResource( 4 )
+
+[node name="PeelHitbox" type="Area2D" parent="BananaPeeling/LeftPeel"]
+script = ExtResource( 8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BananaPeeling/LeftPeel/PeelHitbox"]
+root_node = NodePath("../..")
+anims/LeftPeeling = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BananaPeeling/LeftPeel/PeelHitbox"]
+position = Vector2( -156, -8 )
+polygon = PoolVector2Array( 76, 288, 94, 237, 117, 179, 119, 141, 122, 74, 129, 41, 129, -33, 124, -75, 116, -113, 115, -126, 120, -154, 119, -190, 125, -226, 142, -250, 177, -263, 207, -265, 245, -234, 253, -215, 252, -192, 244, -181, 230, -180, 211, -189, 193, -187, 187, -177, 184, -145, 181, -110, 182, -84, 179, -57, 179, 7, 170, 57, 169, 77, 160, 109, 154, 157, 150, 187, 136, 219, 132, 237, 120, 263, 96, 283, 85, 290 )
+
+[node name="RightPeel" type="Node2D" parent="BananaPeeling"]
+position = Vector2( 877, 580 )
+
+[node name="Sprite" type="Sprite" parent="BananaPeeling/RightPeel"]
+texture = ExtResource( 5 )
+
+[node name="PeelHitbox" type="Area2D" parent="BananaPeeling/RightPeel"]
+z_index = 1
+script = ExtResource( 7 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BananaPeeling/RightPeel/PeelHitbox"]
+anims/RESET = SubResource( 3 )
+anims/RightPeeling = SubResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BananaPeeling/RightPeel/PeelHitbox"]
+position = Vector2( -869, -589 )
+polygon = PoolVector2Array( 790, 367, 805, 380, 828, 390, 841, 447, 847, 545, 863, 680, 867, 822, 873, 854, 897, 870, 920, 747, 919, 661, 902, 534, 897, 477, 885, 422, 876, 367, 855, 325, 832, 317, 803, 321, 790, 342 )
+
+[node name="CenterPeel" type="Node2D" parent="BananaPeeling"]
+position = Vector2( 959, 567 )
+
+[node name="Sprite" type="Sprite" parent="BananaPeeling/CenterPeel"]
+texture = ExtResource( 3 )
+
+[node name="PeelHitbox" type="Area2D" parent="BananaPeeling/CenterPeel"]
+script = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BananaPeeling/CenterPeel/PeelHitbox"]
+polygon = PoolVector2Array( -32, 146, -32, 170, -33, 187, -42, 224, -44, 248, -54, 292, -48, 299, -26, 307, -9, 304, 13, 247, 33, 195, 36, 178, 39, 121, 40, 88, 47, 59, 46, -36, 41, -66, 39, -74, 37, -89, 32, -99, 37, -156, 38, -188, 45, -222, 42, -277, 13, -308, -16, -306, -31, -295, -40, -282, -60, -259, -68, -244, -74, -216, -67, -166, -50, -64, -46, -9, -38, 40, -34, 78, -31, 91 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BananaPeeling/CenterPeel/PeelHitbox"]
+anims/CenterPeeling = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+
+[connection signal="input_event" from="BananaPeeling/LeftPeel/PeelHitbox" to="BananaPeeling/LeftPeel/PeelHitbox" method="_on_PeelHitbox_input_event"]
+[connection signal="mouse_entered" from="BananaPeeling/LeftPeel/PeelHitbox" to="BananaPeeling/LeftPeel/PeelHitbox" method="_on_PeelHitbox_mouse_entered"]
+[connection signal="mouse_exited" from="BananaPeeling/LeftPeel/PeelHitbox" to="BananaPeeling/LeftPeel/PeelHitbox" method="_on_PeelHitbox_mouse_exited"]
+[connection signal="input_event" from="BananaPeeling/RightPeel/PeelHitbox" to="BananaPeeling/RightPeel/PeelHitbox" method="_on_PeelHitbox_input_event"]
+[connection signal="mouse_entered" from="BananaPeeling/RightPeel/PeelHitbox" to="BananaPeeling/RightPeel/PeelHitbox" method="_on_PeelHitbox_mouse_entered"]
+[connection signal="mouse_exited" from="BananaPeeling/RightPeel/PeelHitbox" to="BananaPeeling/RightPeel/PeelHitbox" method="_on_PeelHitbox_mouse_exited"]
+[connection signal="input_event" from="BananaPeeling/CenterPeel/PeelHitbox" to="BananaPeeling/CenterPeel/PeelHitbox" method="_on_PeelHitbox_input_event"]
+[connection signal="mouse_entered" from="BananaPeeling/CenterPeel/PeelHitbox" to="BananaPeeling/CenterPeel/PeelHitbox" method="_on_PeelHitbox_mouse_entered"]
+[connection signal="mouse_exited" from="BananaPeeling/CenterPeel/PeelHitbox" to="BananaPeeling/CenterPeel/PeelHitbox" method="_on_PeelHitbox_mouse_exited"]
