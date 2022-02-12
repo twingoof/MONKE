@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/scenes/first_scene.jpg" type="Texture" id=1]
 [ext_resource path="res://sources/script/FirstScene.gd" type="Script" id=2]
@@ -39,6 +39,7 @@ tracks/1/keys = {
 }
 
 [node name="FirstScene" type="Node2D"]
+script = ExtResource( 2 )
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -56,6 +57,7 @@ margin_bottom = 299.901
 rect_scale = Vector2( 0.722584, 0.722584 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
