@@ -45,7 +45,7 @@ func _handle_dragging():
 	var offset = 0
 
 	self.position = Vector2(mousepos.x, mousepos.y)
-	if self.name.find('foot'):
+	if self.name.find('foot') == -1:
 		offset = 300
 	else:
 		offset = 500
