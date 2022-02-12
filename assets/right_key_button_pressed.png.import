@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gorilla_foot.png-eaf53ae05316671e2c4a3ee8890670fa.stex"
+path="res://.import/right_key_button_pressed.png-1a4701c402ce6befbd9c7055660573da.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gorilla_foot.png"
-dest_files=[ "res://.import/gorilla_foot.png-eaf53ae05316671e2c4a3ee8890670fa.stex" ]
+source_file="res://assets/right_key_button_pressed.png"
+dest_files=[ "res://.import/right_key_button_pressed.png-1a4701c402ce6befbd9c7055660573da.stex" ]
 
 [params]
 

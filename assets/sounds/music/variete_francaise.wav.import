@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/variete_francaise.wav-ec60986b0e1e9b8898f9f33d159a41bb.sample"
+
+[deps]
+
+source_file="res://assets/sounds/music/variete_francaise.wav"
+dest_files=[ "res://.import/variete_francaise.wav-ec60986b0e1e9b8898f9f33d159a41bb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

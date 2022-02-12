@@ -4,18 +4,18 @@
 [ext_resource path="res://assets/start_button_idle.png" type="Texture" id=2]
 [ext_resource path="res://assets/quit_button_idle.png" type="Texture" id=3]
 [ext_resource path="res://assets/quit_button_pressed.png" type="Texture" id=4]
-[ext_resource path="res://sources/scenes/QuitButton.gd" type="Script" id=5]
+[ext_resource path="res://sources/script/QuitButton.gd" type="Script" id=5]
 [ext_resource path="res://assets/start_button_pressed.png" type="Texture" id=6]
 [ext_resource path="res://assets/sounds/common/button.wav" type="AudioStream" id=7]
-[ext_resource path="res://sources/scenes/StartButton.gd" type="Script" id=8]
+[ext_resource path="res://sources/script/StartButton.gd" type="Script" id=8]
 [ext_resource path="res://assets/buttons300x300/no_sound_button_idle.png" type="Texture" id=9]
 [ext_resource path="res://assets/buttons300x300/sound_button_pressed.png" type="Texture" id=10]
 [ext_resource path="res://assets/buttons300x300/sound_button_idle.png" type="Texture" id=11]
 [ext_resource path="res://assets/buttons300x300/no_sound_button_pressed.png" type="Texture" id=12]
 [ext_resource path="res://Global.gd" type="Script" id=13]
 [ext_resource path="res://assets/sounds/menu/music.wav" type="AudioStream" id=14]
-[ext_resource path="res://sources/scenes/SoundOnButton.gd" type="Script" id=15]
-[ext_resource path="res://sources/scenes/SoundOffButton.gd" type="Script" id=16]
+[ext_resource path="res://sources/script/SoundOnButton.gd" type="Script" id=15]
+[ext_resource path="res://sources/script/SoundOffButton.gd" type="Script" id=16]
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -60,7 +60,6 @@ stream = ExtResource( 7 )
 [node name="SoundButton" type="Node2D" parent="Buttons"]
 
 [node name="SoundOff" type="Node2D" parent="Buttons/SoundButton"]
-visible = false
 z_index = 1
 
 [node name="SoundOffButton" type="TextureButton" parent="Buttons/SoundButton/SoundOff"]
@@ -105,6 +104,8 @@ texture = ExtResource( 1 )
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 14 )
+
+[connection signal="button_up" from="Buttons/StartButton" to="Buttons/StartButton" method="_on_StartButton_button_up"]
 [connection signal="pressed" from="Buttons/StartButton" to="Buttons/StartButton" method="_on_StartButton_pressed"]
 [connection signal="button_up" from="Buttons/QuitButton" to="Buttons/QuitButton" method="_on_QuitButton_button_up"]
 [connection signal="pressed" from="Buttons/QuitButton" to="Buttons/QuitButton" method="_on_QuitButton_pressed"]
