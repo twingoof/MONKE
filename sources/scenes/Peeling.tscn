@@ -5,10 +5,11 @@
 [ext_resource path="res://assets/center_peel.png" type="Texture" id=3]
 [ext_resource path="res://assets/left_peel.png" type="Texture" id=4]
 [ext_resource path="res://assets/right_peel.png" type="Texture" id=5]
-[ext_resource path="res://sources/scenes/CenterPeelHitbox.gd" type="Script" id=6]
-[ext_resource path="res://sources/scenes/RightPeelHitbox.gd" type="Script" id=7]
-[ext_resource path="res://sources/scenes/LeftPeelHitbox.gd" type="Script" id=8]
-[ext_resource path="res://sources/scenes/LeftPeel.gd" type="Script" id=9]
+[ext_resource path="res://sources/script/CenterPeelHitbox.gd" type="Script" id=6]
+[ext_resource path="res://sources/script/RightPeelHitbox.gd" type="Script" id=7]
+[ext_resource path="res://sources/script/LeftPeelHitbox.gd" type="Script" id=8]
+[ext_resource path="res://sources/script/LeftPeel.gd" type="Script" id=9]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "LeftPeeling"
