@@ -8,8 +8,19 @@ var objects = [scooter, chair]
 
 onready var anim = $InitAnimation
 
+var bananas_nbr = 5
+
 func _ready():
 	anim.play( "Init" )
+
+func grab_object():
+	return;
+
+func grab_banana(caller):
+	caller.get_parent().position.move_toward(Vector2(0,0), 0.5 * 1)
+	bananas_nbr -= 1;
+	#if (bananas_nbr <= 0):
+	#	anim.play( "End" );
 
 func spawn():
 	randomize()
@@ -32,3 +43,7 @@ func spawn():
 		object_instance.position = rand_pos
 		object_instance.rotation = rand_range(0,360)
 		add_child(object_instance)
+
+
+func _on_TextureButton_pressed():
+	pass # Replace with function body.
