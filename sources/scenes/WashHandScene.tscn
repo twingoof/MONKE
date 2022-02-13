@@ -399,12 +399,13 @@ volume_db = 10.0
 
 [node name="Sound_end" type="AudioStreamPlayer" parent="AnimationPlayerMusic"]
 stream = ExtResource( 14 )
+
 [connection signal="input_event" from="left_foot" to="left_foot" method="_on_KinematicBody2D_input_event"]
 [connection signal="input_event" from="right_foot" to="right_foot" method="_on_KinematicBody2D_input_event"]
 [connection signal="input_event" from="left_hand" to="left_hand" method="_on_KinematicBody2D_input_event"]
 [connection signal="input_event" from="right_hand" to="right_hand" method="_on_KinematicBody2D_input_event"]
-[connection signal="area_entered" from="waterfall" to="right_hand" method="_on_Area2D_area_entered"]
 [connection signal="area_entered" from="waterfall" to="left_foot" method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="waterfall" to="right_hand" method="_on_Area2D_area_entered"]
 [connection signal="button_up" from="AnimationPlayerSprites/NextSceneButton" to="." method="_on_NextSceneButton_button_up"]
 [connection signal="pressed" from="AnimationPlayerSprites/NextSceneButton" to="." method="_on_NextSceneButton_pressed"]
 [connection signal="button_up" from="AnimationPlayerSprites/QuitButton" to="." method="_on_QuitButton_button_up"]

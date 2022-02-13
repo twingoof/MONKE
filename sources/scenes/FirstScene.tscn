@@ -84,6 +84,7 @@ __meta__ = {
 stream = ExtResource( 5 )
 
 [node name="NewLevelButton" type="TextureButton" parent="Buttons"]
+visible = false
 margin_left = 656.868
 margin_top = 741.624
 margin_right = 1256.87
@@ -109,5 +110,6 @@ visible = false
 position = Vector2( 953.517, 489.472 )
 z_index = 6
 texture = ExtResource( 8 )
+
 [connection signal="button_up" from="Buttons/QuitButton" to="Buttons/QuitButton" method="_on_QuitButton_button_up"]
 [connection signal="pressed" from="Buttons/QuitButton" to="Buttons/QuitButton" method="_on_QuitButton_pressed"]
