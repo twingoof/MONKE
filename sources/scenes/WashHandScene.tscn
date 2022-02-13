@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://sources/script/draganddrop.gd" type="Script" id=1]
 [ext_resource path="res://assets/sounds/levels/second/music.wav" type="AudioStream" id=2]
@@ -19,7 +19,6 @@
 [ext_resource path="res://assets/sounds/common/button.wav" type="AudioStream" id=17]
 [ext_resource path="res://assets/quit_button_pressed.png" type="Texture" id=18]
 [ext_resource path="res://assets/quit_button_idle.png" type="Texture" id=19]
-[ext_resource path="res://sources/script/QuitButton.gd" type="Script" id=20]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -335,6 +334,7 @@ position = Vector2( 917, 391 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="waterfall"]
 position = Vector2( 4, -255 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="waterfall"]
@@ -376,7 +376,6 @@ margin_bottom = 299.776
 rect_scale = Vector2( 0.723, 0.723 )
 texture_normal = ExtResource( 19 )
 texture_pressed = ExtResource( 18 )
-script = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

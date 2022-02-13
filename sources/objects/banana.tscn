@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/banana.png" type="Texture" id=1]
 [ext_resource path="res://sources/script/ObjectFell.gd" type="Script" id=2]
+[ext_resource path="res://assets/sounds/levels/first/good.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Fell"
@@ -15,7 +16,19 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 1000 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 2000 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer/Sound_good:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [node name="Node2D" type="Node2D"]
@@ -34,7 +47,12 @@ polygon = PoolVector2Array( 55.0412, -38.8337, 64.291, -33.2628, 57.669, -20.859
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Container/ObjectHitbox"]
 anims/Fell = SubResource( 1 )
-[connection signal="input_event" from="Container/ObjectHitbox" to="Container/ObjectHitbox" method="_on_ObjectHitbox_input_event"]
+
+[node name="Sound_good" type="AudioStreamPlayer" parent="Container/ObjectHitbox/AnimationPlayer"]
+stream = ExtResource( 3 )
+volume_db = 15.0
+
 [connection signal="input_event" from="Container/ObjectHitbox" to="Container/ObjectHitbox" method="_on_Area2D_input_event"]
+[connection signal="input_event" from="Container/ObjectHitbox" to="Container/ObjectHitbox" method="_on_ObjectHitbox_input_event"]
 [connection signal="mouse_entered" from="Container/ObjectHitbox" to="Container/ObjectHitbox" method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Container/ObjectHitbox" to="Container/ObjectHitbox" method="_on_Area2D_mouse_exited"]

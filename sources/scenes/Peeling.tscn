@@ -372,6 +372,7 @@ volume_db = 20.0
 [node name="InitMusic" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 21 )
 volume_db = 20.0
+
 [connection signal="input_event" from="BananaPeeling/LeftPeel/PeelHitbox" to="BananaPeeling/LeftPeel/PeelHitbox" method="_on_PeelHitbox_input_event"]
 [connection signal="mouse_entered" from="BananaPeeling/LeftPeel/PeelHitbox" to="BananaPeeling/LeftPeel/PeelHitbox" method="_on_PeelHitbox_mouse_entered"]
 [connection signal="mouse_exited" from="BananaPeeling/LeftPeel/PeelHitbox" to="BananaPeeling/LeftPeel/PeelHitbox" method="_on_PeelHitbox_mouse_exited"]

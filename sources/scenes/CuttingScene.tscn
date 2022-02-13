@@ -254,6 +254,7 @@ volume_db = 24.0
 [node name="IntroMusic" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 17 )
 volume_db = 24.0
+
 [connection signal="button_up" from="Buttons/QuitButton" to="Buttons/QuitButton" method="_on_QuitButton_button_up"]
 [connection signal="pressed" from="Buttons/QuitButton" to="Buttons/QuitButton" method="_on_QuitButton_pressed"]
 [connection signal="input_event" from="Knife/KnifeHitbox" to="Knife" method="_on_KnifeHitbox_input_event"]

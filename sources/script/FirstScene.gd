@@ -44,3 +44,12 @@ func spawn():
 		banana_instance.get_node("Container").get_node("Sprite").rotation = rotation
 		banana_instance.get_node("Container").get_node("ObjectHitbox").rotation = rotation
 		add_child(banana_instance)
+
+
+func _on_NextSceneButton_pressed():
+	$NextSceneButton/ButtonSound.play()
+
+
+func _on_NextSceneButton_button_up():
+	if (get_tree().change_scene("res://sources/scenes/WashHandScene.tscn")):
+		print("Error loading scene")
