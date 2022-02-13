@@ -53,27 +53,10 @@ func _handle_dragging():
 		self.position.y = offset
 
 
-func _check_no_stains_left(name):
-	var stains = get_node("../" + name + "/GorillaSprite").get_children()
-	var count = 0
-	
-	for stain in stains:
-		if stain.visible:
-			count += 1
-	return count
-
-
 func _process(delta):
 	if dragging:
 		self._handle_washing(delta)
 		self._handle_dragging()
-	var count = self._check_no_stains_left("right_foot")
-	count += self._check_no_stains_left("left_foot")
-	count += self._check_no_stains_left("right_hand")
-	count += self._check_no_stains_left("left_hand")
-	if count == 0:
-		if get_tree().change_scene("res://sources/scenes/Main.tscn"):
-			print("Error loading scene")
 
 
 func _on_KinematicBody2D_input_event(_viewport, event, _shape_idx):

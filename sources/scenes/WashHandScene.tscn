@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://sources/script/draganddrop.gd" type="Script" id=1]
 [ext_resource path="res://assets/sounds/levels/second/music.wav" type="AudioStream" id=2]
@@ -10,6 +10,16 @@
 [ext_resource path="res://assets/water_stream_1.png" type="Texture" id=8]
 [ext_resource path="res://assets/scenes/second_scene.jpg" type="Texture" id=9]
 [ext_resource path="res://assets/stain.png" type="Texture" id=10]
+[ext_resource path="res://assets/scenes/second_scene_instructions.png" type="Texture" id=11]
+[ext_resource path="res://sources/script/WashHandScene.gd" type="Script" id=12]
+[ext_resource path="res://assets/awesome_title.png" type="Texture" id=13]
+[ext_resource path="res://assets/sounds/common/wow.wav" type="AudioStream" id=14]
+[ext_resource path="res://assets/new_level_button_idle.png" type="Texture" id=15]
+[ext_resource path="res://assets/new_level_button_pressed.png" type="Texture" id=16]
+[ext_resource path="res://assets/sounds/common/button.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/quit_button_pressed.png" type="Texture" id=18]
+[ext_resource path="res://assets/quit_button_idle.png" type="Texture" id=19]
+[ext_resource path="res://sources/script/QuitButton.gd" type="Script" id=20]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -22,13 +32,187 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 137.75, 80.25 )
 
+[sub_resource type="Animation" id=8]
+resource_name = "end"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayerSprites/endTitle:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 2.34822 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayerSprites/NextSceneButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "init"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayerSprites/initTitle:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("left_foot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("right_foot:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("left_hand:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("right_hand:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "end"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayerMusic/Music:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.9 ),
+"transitions": PoolRealArray( 0.250001 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayerMusic/Sound_Water:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0.25 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationPlayerMusic/Sound_end:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "init"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayerMusic/Sound_Water:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.1 ),
+"transitions": PoolRealArray( 1.7905, 1.7905 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayerMusic/Sound_intro:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationPlayerMusic/Music:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 4.43828, 2.46229 ),
+"update": 1,
+"values": [ false, true ]
+}
+
 [node name="WashHandScene" type="Node2D"]
+script = ExtResource( 12 )
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 960, 540 )
 texture = ExtResource( 9 )
 
 [node name="left_foot" type="KinematicBody2D" parent="."]
+visible = false
 position = Vector2( 700, 1000 )
 input_pickable = true
 script = ExtResource( 1 )
@@ -59,6 +243,7 @@ position = Vector2( -474, -359 )
 polygon = PoolVector2Array( 476, 155, 587, 199, 616, 233, 587, 389, 512, 390, 490, 531, 335, 545, 359, 370, 360, 161 )
 
 [node name="right_foot" type="KinematicBody2D" parent="."]
+visible = false
 position = Vector2( 1300, 1000 )
 input_pickable = true
 script = ExtResource( 1 )
@@ -90,6 +275,7 @@ position = Vector2( -479, -350 )
 polygon = PoolVector2Array( 476, 143, 591, 159, 594, 296, 606, 435, 613, 524, 466, 527, 449, 383, 353, 384, 339, 229 )
 
 [node name="left_hand" type="KinematicBody2D" parent="."]
+visible = false
 position = Vector2( 1500, 600 )
 input_pickable = true
 script = ExtResource( 1 )
@@ -117,6 +303,7 @@ position = Vector2( -436, -346 )
 polygon = PoolVector2Array( 439, 152, 583, 156, 596, 361, 609, 547, 422, 557, 391, 464, 289, 457, 285, 322, 249, 257 )
 
 [node name="right_hand" type="KinematicBody2D" parent="."]
+visible = false
 position = Vector2( 500, 600 )
 input_pickable = true
 script = ExtResource( 1 )
@@ -153,18 +340,67 @@ playing = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="waterfall"]
 shape = SubResource( 2 )
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
-autoplay = true
+[node name="AnimationPlayerSprites" type="AnimationPlayer" parent="."]
+anims/end = SubResource( 8 )
+anims/init = SubResource( 4 )
 
-[node name="Sound_Water" type="AudioStreamPlayer" parent="."]
+[node name="initTitle" type="Sprite" parent="AnimationPlayerSprites"]
+position = Vector2( 967, 417 )
+texture = ExtResource( 11 )
+
+[node name="endTitle" type="Sprite" parent="AnimationPlayerSprites"]
+visible = false
+position = Vector2( 993, 454 )
+texture = ExtResource( 13 )
+
+[node name="NextSceneButton" type="TextureButton" parent="AnimationPlayerSprites"]
+visible = false
+margin_left = 650.0
+margin_top = 642.0
+margin_right = 1250.0
+margin_bottom = 942.0
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="AnimationPlayerSprites/NextSceneButton"]
+stream = ExtResource( 17 )
+
+[node name="QuitButton" type="TextureButton" parent="AnimationPlayerSprites"]
+margin_left = 1485.77
+margin_top = -0.224487
+margin_right = 2085.77
+margin_bottom = 299.776
+rect_scale = Vector2( 0.723, 0.723 )
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 18 )
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="AnimationPlayerSprites/QuitButton"]
+stream = ExtResource( 17 )
+
+[node name="AnimationPlayerMusic" type="AnimationPlayer" parent="."]
+anims/end = SubResource( 9 )
+anims/init = SubResource( 7 )
+
+[node name="Music" type="AudioStreamPlayer" parent="AnimationPlayerMusic"]
+stream = ExtResource( 2 )
+
+[node name="Sound_Water" type="AudioStreamPlayer" parent="AnimationPlayerMusic"]
 stream = ExtResource( 3 )
 volume_db = -20.0
-autoplay = true
 
-[node name="Sound_intro" type="AudioStreamPlayer" parent="."]
+[node name="Sound_intro" type="AudioStreamPlayer" parent="AnimationPlayerMusic"]
 stream = ExtResource( 4 )
-autoplay = true
+volume_db = 10.0
+
+[node name="Sound_end" type="AudioStreamPlayer" parent="AnimationPlayerMusic"]
+stream = ExtResource( 14 )
 
 [connection signal="input_event" from="left_foot" to="left_foot" method="_on_KinematicBody2D_input_event"]
 [connection signal="input_event" from="right_foot" to="right_foot" method="_on_KinematicBody2D_input_event"]
@@ -172,3 +408,7 @@ autoplay = true
 [connection signal="input_event" from="right_hand" to="right_hand" method="_on_KinematicBody2D_input_event"]
 [connection signal="area_entered" from="waterfall" to="left_foot" method="_on_Area2D_area_entered"]
 [connection signal="area_entered" from="waterfall" to="right_hand" method="_on_Area2D_area_entered"]
+[connection signal="button_up" from="AnimationPlayerSprites/NextSceneButton" to="." method="_on_NextSceneButton_button_up"]
+[connection signal="pressed" from="AnimationPlayerSprites/NextSceneButton" to="." method="_on_NextSceneButton_pressed"]
+[connection signal="button_up" from="AnimationPlayerSprites/QuitButton" to="." method="_on_QuitButton_button_up"]
+[connection signal="pressed" from="AnimationPlayerSprites/QuitButton" to="." method="_on_QuitButton_pressed"]
