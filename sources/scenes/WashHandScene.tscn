@@ -350,6 +350,7 @@ position = Vector2( 967, 417 )
 texture = ExtResource( 11 )
 
 [node name="endTitle" type="Sprite" parent="AnimationPlayerSprites"]
+visible = false
 position = Vector2( 993, 454 )
 texture = ExtResource( 13 )
 
