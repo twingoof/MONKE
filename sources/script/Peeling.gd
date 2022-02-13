@@ -7,12 +7,13 @@ var banana_skins = 3
 func peel_banana():
 	#score +1
 	banana_skins -= 1;
+	$Music/BananaPeeling.play()
 	if (banana_skins <= 0):
 		anim.play( "End" );
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	get_node("Music/GameMusic").play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
