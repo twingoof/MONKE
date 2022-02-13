@@ -39,7 +39,10 @@ func knife_cutting():
 	if (stateId == 3):
 		anim.play( "End" )
 
+func _on_NextSceneButton_button_up():
+	if (get_tree().change_scene("res://sources/scenes/Crushing.tscn")):
+		print("Error loading scene")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_NextSceneButton_pressed():
+	$Buttons/NextSceneButton/ButtonSound.play()
+

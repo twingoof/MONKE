@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/scenes/fourth_scene.jpg" type="Texture" id=1]
 [ext_resource path="res://assets/quit_button_idle.png" type="Texture" id=2]
@@ -17,6 +17,9 @@
 [ext_resource path="res://assets/sounds/levels/fourth/tchop.wav" type="AudioStream" id=15]
 [ext_resource path="res://assets/sounds/levels/fourth/music.wav" type="AudioStream" id=16]
 [ext_resource path="res://assets/sounds/levels/fourth/intro.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/new_level_button_idle.png" type="Texture" id=18]
+[ext_resource path="res://assets/new_level_button_pressed.png" type="Texture" id=19]
+[ext_resource path="res://assets/sounds/common/wow.wav" type="AudioStream" id=20]
 
 [sub_resource type="Animation" id=1]
 resource_name = "End"
@@ -28,10 +31,34 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 2.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false, true, false ]
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Buttons/NextSceneButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Animation/AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -158,6 +185,21 @@ __meta__ = {
 [node name="ButtonSound" type="AudioStreamPlayer" parent="Buttons/QuitButton"]
 stream = ExtResource( 4 )
 
+[node name="NextSceneButton" type="TextureButton" parent="Buttons"]
+visible = false
+margin_left = 630.28
+margin_top = 680.226
+margin_right = 1230.28
+margin_bottom = 980.226
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="Buttons/NextSceneButton"]
+stream = ExtResource( 4 )
+
 [node name="InitTitle" type="Sprite" parent="."]
 visible = false
 position = Vector2( 985.522, 547.761 )
@@ -166,13 +208,16 @@ texture = ExtResource( 5 )
 
 [node name="EndTitle" type="Sprite" parent="."]
 visible = false
-position = Vector2( 968.349, 533.969 )
+position = Vector2( 963.592, 464.995 )
 z_index = 1
 texture = ExtResource( 14 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 anims/End = SubResource( 1 )
 anims/Init = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Animation"]
+stream = ExtResource( 20 )
 
 [node name="Bananas" type="Node2D" parent="."]
 visible = false
@@ -257,4 +302,6 @@ volume_db = 24.0
 
 [connection signal="button_up" from="Buttons/QuitButton" to="Buttons/QuitButton" method="_on_QuitButton_button_up"]
 [connection signal="pressed" from="Buttons/QuitButton" to="Buttons/QuitButton" method="_on_QuitButton_pressed"]
+[connection signal="button_up" from="Buttons/NextSceneButton" to="." method="_on_NextSceneButton_button_up"]
+[connection signal="pressed" from="Buttons/NextSceneButton" to="." method="_on_NextSceneButton_pressed"]
 [connection signal="input_event" from="Knife/KnifeHitbox" to="Knife" method="_on_KnifeHitbox_input_event"]
