@@ -13,7 +13,7 @@ func peel_banana():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_node("Music/GameMusic").play()
+	$AnimationPlayer.play( "Init" )
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

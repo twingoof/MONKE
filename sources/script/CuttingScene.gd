@@ -23,10 +23,14 @@ func init_lines():
 func _ready():
 	anim.play( "Init" )
 
+func play_game_music():
+	$Music/GameMusic.play()
+
 func knife_cutting():
 	if (get_node("Knife/KnifeHitbox") in collisions[stateId].get_overlapping_areas()):
 		stateId += 1
 		get_node("Bananas/AnimatedSprite").set_frame(stateId)
+		$Music/BananaCutting.play()
 		for i in range(0, len(lines)):
 			if(i == stateId):
 				lines[i].visible = true
