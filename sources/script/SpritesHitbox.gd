@@ -25,11 +25,13 @@ func _on_SpritesHitbox_mouse_entered():
 func _on_SpritesHitbox_input_event(viewport, event, shape_idx):
 	if (event is InputEventMouseButton && event.pressed):
 		if state == 1:
+			get_node("../../AnimationPlayer/Sound_crush").play()
 			sprites.get_node("BowlStateOne").visible = false
 			sprites.get_node("BowlStateTwo").visible = true
 			state = 2
 		elif state == 2:
+			get_node("../../AnimationPlayer/Sound_crush").play()
 			sprites.get_node("BowlStateTwo").visible = false
 			sprites.get_node("BowlStateThree").visible = true
 			state = 3
-		
+			get_node("../../AnimationPlayer").play("end")
