@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/scenes/first_scene.jpg" type="Texture" id=1]
 [ext_resource path="res://sources/script/FirstScene.gd" type="Script" id=2]
@@ -7,12 +7,29 @@
 [ext_resource path="res://assets/sounds/common/button.wav" type="AudioStream" id=5]
 [ext_resource path="res://sources/script/QuitButton.gd" type="Script" id=6]
 [ext_resource path="res://assets/scenes/first_scene_instructions.png" type="Texture" id=7]
+[ext_resource path="res://assets/success_title.png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=2]
+resource_name = "End"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("EndTitle:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "Init"
 length = 3.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:visible")
+tracks/0/path = NodePath("InitTitle:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -65,13 +82,19 @@ __meta__ = {
 [node name="ButtonSound" type="AudioStreamPlayer" parent="Buttons/QuitButton"]
 stream = ExtResource( 5 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="InitTitle" type="Sprite" parent="."]
 visible = false
 position = Vector2( 953.313, 504.029 )
 texture = ExtResource( 7 )
 
-[node name="InitAnimation" type="AnimationPlayer" parent="."]
+[node name="Animation" type="AnimationPlayer" parent="."]
+anims/End = SubResource( 2 )
 anims/Init = SubResource( 1 )
 
+[node name="EndTitle" type="Sprite" parent="."]
+visible = false
+position = Vector2( 953.517, 489.472 )
+z_index = 6
+texture = ExtResource( 8 )
 [connection signal="button_up" from="Buttons/QuitButton" to="Buttons/QuitButton" method="_on_QuitButton_button_up"]
 [connection signal="pressed" from="Buttons/QuitButton" to="Buttons/QuitButton" method="_on_QuitButton_pressed"]

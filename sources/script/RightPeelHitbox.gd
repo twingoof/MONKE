@@ -8,6 +8,7 @@ func _on_PeelHitbox_mouse_entered():
 func _on_PeelHitbox_mouse_exited():
 	mouse_over = false
 
-func _on_PeelHitbox_input_event(viewport, event, shape_idx):
+func _on_PeelHitbox_input_event(_viewport, event, _shape_idx):
 	if (event is InputEventMouseButton && event.pressed):
 		$AnimationPlayer.play("RightPeeling")
+		get_parent().get_parent().get_parent().peel_banana()

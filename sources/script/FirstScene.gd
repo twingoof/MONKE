@@ -1,31 +1,30 @@
 extends Node2D
 
 var n = 5
-var scooter = load("res://sources/objects/scooter.tscn")
 var banana = load("res://sources/objects/banana.tscn")
+var scooter = load("res://sources/objects/scooter.tscn")
 var chair = load("res://sources/objects/chair.tscn")
-var objects = [scooter, chair]
+var objects = [scooter,chair]
 
-onready var anim = $InitAnimation
+onready var anim = $Animation
 
 var bananas_nbr = 5
+var titleId
 
 func _ready():
 	anim.play( "Init" )
 
-func grab_object():
-	return;
-
-func grab_banana(caller):
-	caller.get_parent().position.move_toward(Vector2(0,0), 0.5 * 1)
+func grab_banana():
+	#score +1
 	bananas_nbr -= 1;
-	#if (bananas_nbr <= 0):
-	#	anim.play( "End" );
+	if (bananas_nbr <= 0):
+		anim.play( "End" );
 
 func spawn():
 	randomize()
+
 	for i in n:
-		var id = rand_range(0,2)
+		var id = randi()%2
 		var x = rand_range(500,1250)
 		var y = rand_range(0,500)
 		var rand_pos = Vector2(x,y)
@@ -34,16 +33,14 @@ func spawn():
 		object_instance.position = rand_pos
 		object_instance.rotation = rand_range(0,360)
 		add_child(object_instance)
-	for i in 5:
+	for i in n:
 		var x = rand_range(500,1250)
 		var y = rand_range(0,500)
 		var rand_pos = Vector2(x,y)
-
-		var object_instance = banana.instance()
-		object_instance.position = rand_pos
-		object_instance.rotation = rand_range(0,360)
-		add_child(object_instance)
-
-
-func _on_TextureButton_pressed():
-	pass # Replace with function body.
+		
+		var banana_instance = banana.instance()
+		var rotation = rand_range(0,360)
+		banana_instance.position = rand_pos
+		banana_instance.get_node("Container").get_node("Sprite").rotation = rotation
+		banana_instance.get_node("Container").get_node("ObjectHitbox").rotation = rotation
+		add_child(banana_instance)
