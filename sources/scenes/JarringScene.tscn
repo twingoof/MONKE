@@ -1,0 +1,166 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://assets/scenes/third_scene.jpg" type="Texture" id=1]
+[ext_resource path="res://assets/jar_turn_3.png" type="Texture" id=2]
+[ext_resource path="res://assets/jar_turn_5.png" type="Texture" id=3]
+[ext_resource path="res://assets/jar_turn_6.png" type="Texture" id=4]
+[ext_resource path="res://assets/jar_turn_4.png" type="Texture" id=5]
+[ext_resource path="res://assets/jar_turn_0.png" type="Texture" id=6]
+[ext_resource path="res://assets/jar_turn_1.png" type="Texture" id=7]
+[ext_resource path="res://assets/jar_turn_7.png" type="Texture" id=8]
+[ext_resource path="res://assets/jar_turn_9.png" type="Texture" id=9]
+[ext_resource path="res://assets/jar_bottom.png" type="Texture" id=10]
+[ext_resource path="res://assets/jar_turn_10.png" type="Texture" id=11]
+[ext_resource path="res://assets/jar_turn_2.png" type="Texture" id=12]
+[ext_resource path="res://assets/jar_turn_8.png" type="Texture" id=13]
+[ext_resource path="res://assets/jar_top.png" type="Texture" id=14]
+[ext_resource path="res://assets/sounds/final.wav" type="AudioStream" id=15]
+[ext_resource path="res://sources/script/JarringScene.gd" type="Script" id=16]
+[ext_resource path="res://assets/scenes/final_scene_addon.png" type="Texture" id=17]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 12 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 13 ), ExtResource( 9 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Game"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Jar/Bottom:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 994, 906 ), Vector2( 994, 636 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Jar/Top:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 985.622, 100.027 ), Vector2( 985.622, 477.027 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Jar/Animation:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Music/AudioStreamPlayer2D:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Jar/Bottom:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Jar/Top:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.5, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Jar/Animation/AnimatedSprite:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6, 6.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Background/Addon:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 6.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="JarringScene" type="Node2D"]
+script = ExtResource( 16 )
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Background"]
+position = Vector2( 960.776, 540.604 )
+texture = ExtResource( 1 )
+
+[node name="Addon" type="Sprite" parent="Background"]
+visible = false
+position = Vector2( 961.913, 538.397 )
+texture = ExtResource( 17 )
+
+[node name="Jar" type="Node2D" parent="."]
+
+[node name="Animation" type="Node2D" parent="Jar"]
+visible = false
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Jar/Animation"]
+position = Vector2( 990.27, 570.486 )
+frames = SubResource( 1 )
+
+[node name="Bottom" type="Sprite" parent="Jar"]
+position = Vector2( 994, 906 )
+texture = ExtResource( 10 )
+
+[node name="Top" type="Sprite" parent="Jar"]
+position = Vector2( 985.622, 100.027 )
+texture = ExtResource( 14 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Game = SubResource( 2 )
+
+[node name="Music" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Music"]
+stream = ExtResource( 15 )
