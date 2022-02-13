@@ -334,6 +334,7 @@ position = Vector2( 917, 391 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="waterfall"]
 position = Vector2( 4, -255 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="waterfall"]
@@ -349,7 +350,6 @@ position = Vector2( 967, 417 )
 texture = ExtResource( 11 )
 
 [node name="endTitle" type="Sprite" parent="AnimationPlayerSprites"]
-visible = false
 position = Vector2( 993, 454 )
 texture = ExtResource( 13 )
 

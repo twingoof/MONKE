@@ -199,5 +199,6 @@ __meta__ = {
 
 [node name="ButtonSound" type="AudioStreamPlayer" parent="Buttons/QuitButton"]
 stream = ExtResource( 18 )
+
 [connection signal="button_up" from="Buttons/QuitButton" to="Buttons/QuitButton" method="_on_QuitButton_button_up"]
 [connection signal="pressed" from="Buttons/QuitButton" to="Buttons/QuitButton" method="_on_QuitButton_pressed"]
