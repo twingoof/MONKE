@@ -95,7 +95,6 @@ z_index = 2
 position = Vector2( 960, 540 )
 z_index = 3
 texture = ExtResource( 7 )
-
 [connection signal="input_event" from="Bowl/SpritesHitbox" to="Bowl/SpritesHitbox" method="_on_SpritesHitbox_input_event"]
 [connection signal="mouse_entered" from="Bowl/SpritesHitbox" to="Bowl/SpritesHitbox" method="_on_SpritesHitbox_mouse_entered"]
 [connection signal="mouse_exited" from="Bowl/SpritesHitbox" to="Bowl/SpritesHitbox" method="_on_SpritesHitbox_mouse_exited"]
