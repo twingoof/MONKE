@@ -1,5 +1,8 @@
 extends Node2D
 
+var ended = false
+
+
 func _ready():
 	$AnimationPlayerSprites.play("init")
 	$AnimationPlayerMusic.play("init")
@@ -16,11 +19,14 @@ func _check_no_stains_left(name):
 
 
 func _process(_delta):
+	if ended:
+		return
 	var count = self._check_no_stains_left("right_foot")
 	count += self._check_no_stains_left("left_foot")
 	count += self._check_no_stains_left("right_hand")
 	count += self._check_no_stains_left("left_hand")
 	if count == 0:
+		ended = true
 		$AnimationPlayerSprites.play("end")
 		$AnimationPlayerMusic.play("end")
 

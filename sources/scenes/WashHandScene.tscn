@@ -41,10 +41,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 2.5 ),
-"transitions": PoolRealArray( 1, 2.34822, 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 2.34822 ),
 "update": 1,
-"values": [ false, true, false ]
+"values": [ false, true ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("AnimationPlayerSprites/NextSceneButton:visible")
@@ -344,6 +344,7 @@ anims/end = SubResource( 3 )
 anims/init = SubResource( 4 )
 
 [node name="initTitle" type="Sprite" parent="AnimationPlayerSprites"]
+visible = false
 position = Vector2( 967, 417 )
 texture = ExtResource( 11 )
 
